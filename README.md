@@ -37,13 +37,13 @@ What do you need installed ?
  - Then npm install within the project dir.
 
 ```
-npm install
+> npm install
 ```
 
  - Last, run the server , with npm start.
 
 ```
-npm start
+> npm start
 ```
 
 ## Next Patch (v1):
