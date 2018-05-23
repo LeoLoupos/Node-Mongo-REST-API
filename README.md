@@ -49,7 +49,7 @@ What do you need installed ?
 ## Next Patch (v1):
 
    - passport.js with jwt strategy
-   - data validation with [Joi] (https://www.npmjs.com/package/joi)
+   - data validation with [Joi](https://www.npmjs.com/package/joi)
    - [Redis] middleware caching (https://www.npmjs.com/package/redis)
    - Security Issues as : CSRF - XSS - Http Headers with Helmet
    - Brute force Protection with [ratelimiter] (https://www.npmjs.com/package/ratelimiter)
