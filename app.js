@@ -7,8 +7,6 @@ const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user')
 
-//mongo-atlas Admin:testatlas_admin
-// var MongoClient = require('mongodb').MongoClient;
 var MongoClient = require('mongoose');
 
 app.use(morgan('dev'));
