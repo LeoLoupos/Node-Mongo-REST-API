@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use('/uploads' , express.static('uploads')); // file uploads is public static , with the /uploads path , it knows which paths it runs
 
 //MongoDB Set Up
-var uri = 'mongodb+srv://admin:' + process.env.MONGO_ATLAS_PW + '@atlastest-jekwc.mongodb.net/test?retryWrites=false';
+var uri = 'mongodb+srv://admin:' + process.env.MONGO_ATLAS_PW + '@xxxxxxxxxxxxxx.net/test?retryWrites=false';
 
 MongoClient.connect(uri, function(err, client) {
     console.log(client);
