@@ -7,7 +7,7 @@ A simple NodeJS Rest API with Express , MongoDB , JWT and multer.
   - bcrypt for password hashing
   - mongoose for MongoDB client
   - morgan for logging
-  - body-parser and jsonwebtoken 
+  - body-parser
   - file and image uploading with multer
   - JsonWebToken for signed tokens
  
