@@ -4,6 +4,7 @@ const router =  express.Router();
 const checkAuth = require('../middleware/check-auth');
 const ProductsController = require('../controllers/products');
 const bodyValidation = require('../middleware/body-validation')
+const redisCache = require('../middleware/redis-cache')
 
 //Uploading files
 const multer = require('multer');
@@ -40,7 +41,7 @@ const upload = multer({
 }); //Be careful the absolute paths like '/uploads/'
 
 
-router.get('/', ProductsController.products_get_all );
+router.get('/', redisCache.checkCachedData , ProductsController.products_get_all );
 
 router.post('/', checkAuth, 
                  upload.single('productImage') , //single() means one file only
