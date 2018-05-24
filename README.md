@@ -62,7 +62,7 @@ Google how to pass your process.env data , in your nodeJS server
   
 ## Authors
 
-* **Leonidas Loupos** - *FullStack JS Developer* - [LeoLoupos](https://www.linkedin.com/in/leo-loupos/)
+* **Leonidas Loupos** - *FullStack JS Developer* - [LinkedIn](https://www.linkedin.com/in/leo-loupos/)
 
 
 ## License
