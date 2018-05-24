@@ -9,6 +9,7 @@ A simple NodeJS Rest API with Express , MongoDB , JWT and multer.
   - morgan for logging
   - body-parser and jsonwebtoken 
   - file and image uploading with multer
+  - JsonWebToken for signed tokens
  
 - The server has a custom CORS solution.
 
