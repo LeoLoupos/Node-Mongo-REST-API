@@ -7,7 +7,10 @@ const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user')
 
+<<<<<<< HEAD
 // var MongoClient = require('mongodb').MongoClient;
+=======
+>>>>>>> 909bab43ebe47dcc73927eb52ccba7f12ecf879e
 var MongoClient = require('mongoose');
 
 
@@ -21,7 +24,11 @@ app.use('/uploads' , express.static('uploads')); // file uploads is public stati
 
 
 //MongoDB Set Up
+<<<<<<< HEAD
 var uri = `mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@${process.env.MONGO_ATLAS_URL}?retryWrites=false`
+=======
+var uri = 'mongodb+srv://admin:' + process.env.MONGO_ATLAS_PW + '@xxxxxxxxxxxxxx.net/test?retryWrites=false';
+>>>>>>> 909bab43ebe47dcc73927eb52ccba7f12ecf879e
 
 MongoClient.connect(uri, function(err, client) {
     //console.log(client);

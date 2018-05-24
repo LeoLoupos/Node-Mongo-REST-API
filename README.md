@@ -27,8 +27,11 @@ What do you need installed ?
   - MongoDB 
   - npm 
 
+<<<<<<< HEAD
 Search how to pass your process.env data , in your nodeJS server
 
+=======
+>>>>>>> 909bab43ebe47dcc73927eb52ccba7f12ecf879e
 ### Installing
 
  - Start your mongoDB by running: mongod.
@@ -60,7 +63,11 @@ Search how to pass your process.env data , in your nodeJS server
   
 ## Authors
 
+<<<<<<< HEAD
 * **Leonidas Loupos** - *FullStack JS Developer* - [LeoLoupos](https://www.linkedin.com/in/leo-loupos/)
+=======
+* **Leonidas Loupos** - *CTO of QuickBee Web Technologies* - [LeoLoupos](https://github.com/LeoLoupos)
+>>>>>>> 909bab43ebe47dcc73927eb52ccba7f12ecf879e
 
 ## License
 
