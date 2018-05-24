@@ -20,8 +20,7 @@ app.use('/uploads' , express.static('uploads')); // file uploads is public stati
 
 
 //MongoDB Set Up
-var uri = `mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@${process.env.MONGO_ATLAS_URL}?retryWrites=false`
-
+var uri = `mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@${process.env.MONGO_ATLAS_URL}?retryWrites=false`;
 
 MongoClient.connect(uri, function(err, client) {
     //console.log(client);
