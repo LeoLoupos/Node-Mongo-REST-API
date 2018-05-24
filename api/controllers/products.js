@@ -39,9 +39,11 @@ exports.products_get_all = function(req, res, next){
 }
 
 //'POST' /products controller
-exports.products_create_product = function(req, res, next){ //single() means one file
+exports.products_create_product = function(req, res, next){ 
     
-        console.log(req.file) // because middleware is executed first , we can acces req.file
+        console.log(req.file)
+        
+        console.log(req.body);// because middleware is executed first , we can acces req.file
         //single() wrote the binary image
     
         const product = new Product({
@@ -145,7 +147,7 @@ exports.products_patch_product = function(req, res, next){
 }
 
 //'DELETE' /products/id controller
-exports.product_delete_product =  function(req, res, next){
+exports.products_delete_product =  function(req, res, next){
     const id = req.params.id;
     Product.remove({ _id: id }).exec()
     .then(result =>{

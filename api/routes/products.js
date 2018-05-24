@@ -3,6 +3,7 @@ const router =  express.Router();
 
 const checkAuth = require('../middleware/check-auth');
 const ProductsController = require('../controllers/products');
+const bodyValidation = require('../middleware/body-validation')
 
 //Uploading files
 const multer = require('multer');
@@ -28,6 +29,7 @@ const fileFilter = (req, file, cb) => {
     }
 
 };
+
 // our multer constructor
 const upload = multer({
     storage: storage, 
@@ -40,12 +42,18 @@ const upload = multer({
 
 router.get('/', ProductsController.products_get_all );
 
-router.post('/', checkAuth, upload.single('productImage') , ProductsController.products_create_product );
+router.post('/', checkAuth, 
+                 upload.single('productImage') , //single() means one file only
+                 bodyValidation.validateProduct, 
+                 ProductsController.products_create_product );
 
-router.get('/:id', checkAuth, ProductsController.products_get_productid );
+router.get('/:id', checkAuth, 
+                   ProductsController.products_get_productid );
 
-router.patch('/:id', checkAuth, ProductsController.products_patch_product );
+router.patch('/:id', checkAuth,
+                     ProductsController.products_patch_product );
 
-router.delete('/:id', checkAuth, ProductsController.product_delete_product );
+router.delete('/:id', checkAuth,
+                      ProductsController.products_delete_product );
 
 module.exports = router;

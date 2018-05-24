@@ -7,9 +7,9 @@ const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user')
 
-//mongo-atlas Admin:testatlas_admin
 // var MongoClient = require('mongodb').MongoClient;
 var MongoClient = require('mongoose');
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded( {extended: false} ));
@@ -18,11 +18,13 @@ app.use(bodyParser.json());
 //static files use
 app.use('/uploads' , express.static('uploads')); // file uploads is public static , with the /uploads path , it knows which paths it runs
 
+
+
 //MongoDB Set Up
-var uri = 'mongodb+srv://admin:' + process.env.MONGO_ATLAS_PW + '@atlastest-jekwc.mongodb.net/test?retryWrites=false';
+var uri = `mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@${process.env.MONGO_ATLAS_URL}?retryWrites=false`
 
 MongoClient.connect(uri, function(err, client) {
-    console.log(client);
+    //console.log(client);
 });
 
 MongoClient.Promise = global.Promise;//we can use bluebird etc..
