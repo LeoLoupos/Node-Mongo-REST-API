@@ -3,7 +3,7 @@
 A simple NodeJS Rest API with Express , MongoDB , JWT and multer.
 
 - The packages I use: 
-  - joi for request 
+  - joi for data validation
   - bcrypt for password hashing
   - mongoose for MongoDB client
   - morgan for logging
