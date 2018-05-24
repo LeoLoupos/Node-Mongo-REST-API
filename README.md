@@ -3,6 +3,7 @@
 A simple NodeJS Rest API with Express , MongoDB , JWT and multer.
 
 - The packages I use: 
+  - joi for request 
   - bcrypt for password hashing
   - mongoose for MongoDB client
   - morgan for logging
@@ -24,14 +25,11 @@ A simple NodeJS Rest API with Express , MongoDB , JWT and multer.
 
 What do you need installed ? 
   - Node 
-  - MongoDB 
+  - MongoDB or Atlas
   - npm 
 
-<<<<<<< HEAD
-Search how to pass your process.env data , in your nodeJS server
+Google how to pass your process.env data , in your nodeJS server
 
-=======
->>>>>>> 909bab43ebe47dcc73927eb52ccba7f12ecf879e
 ### Installing
 
  - Start your mongoDB by running: mongod.
