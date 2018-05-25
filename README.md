@@ -1,6 +1,6 @@
 # NodeJS Rest API with Express , MongoDB , JWT and multer
 
-A simple NodeJS Rest API with Express , MongoDB , JWT and multer.
+A template for NodeJS Rest API with Express , MongoDB , JWT and multer.
 
 - The packages I use: 
   - joi for data validation
@@ -54,9 +54,9 @@ Google how to pass your process.env data , in your nodeJS server
 
    - passport.js with jwt strategy
    - :white_check_mark: data validation with [Joi](https://www.npmjs.com/package/joi)
-   - [Redis](https://www.npmjs.com/package/redis) middleware caching 
-   - node-emailer
+   - :white_check_mark: [Redis](https://www.npmjs.com/package/redis) middleware caching 
    - Security Issues as : CSRF - XSS - Http Headers with Helmet
+   - Content-Security-Policy - Setting Up with [helmet-csp](https://www.npmjs.com/package/helmet-csp)
    - Brute force Protection with [ratelimiter](https://www.npmjs.com/package/ratelimiter)
    - Errors with [Winston](https://www.npmjs.com/package/winston)
    - End to End tests , Unit testing , assertion test : [Mocha](https://www.npmjs.com/package/mocha) , [Chai](https://www.npmjs.com/package/chai) and Simon
