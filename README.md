@@ -59,8 +59,7 @@ Google how to pass your process.env data , in your nodeJS server
    - Security Issues as : CSRF - XSS - Http Headers with Helmet
    - Brute force Protection with [ratelimiter](https://www.npmjs.com/package/ratelimiter)
    - Errors with [Winston](https://www.npmjs.com/package/winston)
-   - End to End tests , Unit testing , assertion test : [Mocha](https://www.npmjs.com/package/mocha) and [Chai]
- (https://www.npmjs.com/package/chai) and Simon
+   - End to End tests , Unit testing , assertion test : [Mocha](https://www.npmjs.com/package/mocha) and [Chai](https://www.npmjs.com/package/chai) and Simon
   
 ## Authors
 
