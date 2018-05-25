@@ -55,9 +55,9 @@ Google how to pass your process.env data , in your nodeJS server
    - passport.js with jwt strategy
    - :white_check_mark: data validation with [Joi](https://www.npmjs.com/package/joi)
    - :white_check_mark: [Redis](https://www.npmjs.com/package/redis) middleware caching 
-   - Security Issues as : CSRF - XSS - Http Headers with Helmet
-   - Content-Security-Policy - Setting Up with [helmet-csp](https://www.npmjs.com/package/helmet-csp)
-   - Brute force Protection with [ratelimiter](https://www.npmjs.com/package/ratelimiter)
+   - :white_check_mark: Security Issues as : CSRF - Http Headers with Helmet
+   - XSS & Content-Security-Policy - Setting Up with [helmet-csp](https://www.npmjs.com/package/helmet-csp)
+   - Brute force Protection with [ratelimit.js](https://www.npmjs.com/package/ratelimit.js)
    - Errors with [Winston](https://www.npmjs.com/package/winston)
    - End to End tests , Unit testing , assertion test : [Mocha](https://www.npmjs.com/package/mocha) , [Chai](https://www.npmjs.com/package/chai) and Simon
   
