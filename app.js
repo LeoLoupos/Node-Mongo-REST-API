@@ -3,13 +3,13 @@ const app = express();
 const morgan = require('morgan'); // morgan calls the next() , to inform that it logged and the middleware cycle should continue
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-
+var MongoClient = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
-const userRoutes = require('./api/routes/user')
+const userRoutes = require('./api/routes/user');
 
-var MongoClient = require('mongoose');
+const rateLimit = require('./api/middleware/security/ratelimit');
 
 //Helmet Protection
 app.use(helmet.noCache());
@@ -27,16 +27,38 @@ app.use(bodyParser.json());
 //static files use
 app.use('/uploads' , express.static('uploads')); // file uploads is public static , with the /uploads path , it knows which paths it runs
 
+//Rate Limiter with Redis and express-rate-limit
+app.use(rateLimit.limiter);
+
 
 //MongoDB Set Up
 var uri = `mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@${process.env.MONGO_ATLAS_URL}?retryWrites=false`;
 
 MongoClient.connect(uri, function(err, client) {
-    //console.log(client);
+
 });
 
 MongoClient.Promise = global.Promise;//we can use bluebird etc..
 
+// var RateLimit = require('express-rate-limit');
+// var RedisStore = require('rate-limit-redis');
+ 
+// try{
+//     var limiter = new RateLimit({
+//     store: new RedisStore({
+//         // see Configuration
+//         expiry: 120,
+//         prefix: 'app_main_server',
+//         client: require('redis').createClient()
+//     }),
+//     max: 1, // limit each IP to 100 requests per windowMs
+//     delayMs: 0 // disable delaying - full speed until the max limit is reached
+//     });
+// } catch (e) {
+
+// }
+
+// app.use(limiter);
 
 //Every request that is getting build , adds that to the header;
 app.use((req, res, next) => {
@@ -51,7 +73,6 @@ app.use((req, res, next) => {
         return res.status(200).json({}); //empty json to provide the headers answer
     }
 
-    //In order not to block the code
     next();
 });
 

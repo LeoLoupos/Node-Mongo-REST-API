@@ -1,5 +1,5 @@
 var redis = require('redis');
-let redisClient = redis.createClient({host : 'localhost', port : 6379});
+var redisClient = redis.createClient({host : 'localhost', port : 6379});
 
 //Event Handdlers
 redisClient.on('connect', function(){

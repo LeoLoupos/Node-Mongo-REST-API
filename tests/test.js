@@ -3,7 +3,7 @@ const expect = chai.expect;
 // import our getIndexPage function
 const sinon = require("sinon");
 
-const signUpPage = require("../api/controllers/user.js");
+const signUpPage = require("../api/middleware/body-validation");
 //SimonJS
 /* 
 Spies: Creates fake functions which we can use to track executions. This means we can tell/ find out whether the function has been executed/ how many times its been called etc. We can also use spies on existing functions and get the same capability, to track those functions executions. We'll see this in action a bit later.
@@ -14,25 +14,28 @@ Mocks: They are fake methods, that have pre-programmed behavior and pre-programm
 */
 
 //Sign Up User Spy
-describe("signUpUser", function() {
-  it("should return a new signed user", function() {
+describe("validateUserLogIn_SignUp", function() {
+  it("should return next()", function() {
 
     let req = {
         body: {
             email: "testemail@gmail.com",
-            password: "test"
+            password: "te"
         }
     }
-    // Have `res` have a send key with a function value coz we use `res.send()` in our func
+
     let res = {
       status: sinon.spy(),
       json: sinon.spy(),
-      message : sinon.spy()
+      next : sinon.spy()
     }
 
-    signUpPage.user_signup(req, res);
+    signUpPage.validateUser(req, res);
     // console.log(res.json
-    console.log(res.message);
+    console.log(res.status);
+    console.log(res.json);
+    console.log(res.next);
+
 
     // `res.send` called once
     // expect(res.json).to.be.true;
