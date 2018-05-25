@@ -2,12 +2,22 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan'); // morgan calls the next() , to inform that it logged and the middleware cycle should continue
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
+
 
 const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user')
 
 var MongoClient = require('mongoose');
+
+//Helmet Protection
+app.use(helmet.noCache());
+app.use(helmet({
+    frameguard: {
+      action: 'deny' //allow if your app is <frame> || <object>
+    }
+}));
 
 
 app.use(morgan('dev'));
@@ -16,7 +26,6 @@ app.use(bodyParser.json());
 
 //static files use
 app.use('/uploads' , express.static('uploads')); // file uploads is public static , with the /uploads path , it knows which paths it runs
-
 
 
 //MongoDB Set Up
