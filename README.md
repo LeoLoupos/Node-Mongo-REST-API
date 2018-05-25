@@ -59,7 +59,7 @@ Google how to pass your process.env data , in your nodeJS server
    - XSS & Content-Security-Policy - Setting Up with [helmet-csp](https://www.npmjs.com/package/helmet-csp)
    - :white_check_mark: Brute force Protection with [ratelimit.js](https://www.npmjs.com/package/ratelimit.js) and [Redis](https://www.npmjs.com/package/redis)
    - Errors with [Winston](https://www.npmjs.com/package/winston)
-   - End to End tests , Unit testing , assertion test : [Mocha](https://www.npmjs.com/package/mocha) , [Chai](https://www.npmjs.com/package/chai) and Simon
+   - End to End tests , Unit testing , assertion test : [Mocha](https://www.npmjs.com/package/mocha) , [Chai](https://www.npmjs.com/package/chai) and [Sinon](https://www.npmjs.com/package/sinon)
   
 ## Authors
 
