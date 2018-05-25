@@ -20,16 +20,17 @@ function checkCachedData(req, res, next){
     
     redisClient.get(key, function(err, reply){
       if(reply){
-          res.send(JSON.parse(reply));
+        res.send(JSON.parse(reply));
       }else{
-          res.sendResponse = res.send;
-          res.send = (body) => {
-              redisClient.setex(key, 2 * 3600, JSON.stringify(body));
-              res.sendResponse(body);
-          }
-          next();
+        res.sendResponse = res.send;
+        res.send = (body) => {
+            redisClient.setex(key, 2 * 3600, JSON.stringify(body));
+            res.sendResponse(body);
+        }
+        next();
       }
-    });}
+    });
+}
 
 module.exports = {
     checkCachedData

@@ -41,14 +41,16 @@ const upload = multer({
 }); //Be careful the absolute paths like '/uploads/'
 
 
-router.get('/', redisCache.checkCachedData , ProductsController.products_get_all );
+router.get('/', redisCache.checkCachedData , //redis cache
+                ProductsController.products_get_all );
 
 router.post('/', checkAuth, 
                  upload.single('productImage') , //single() means one file only
                  bodyValidation.validateProduct, 
                  ProductsController.products_create_product );
 
-router.get('/:id', checkAuth, 
+router.get('/:id', checkAuth,
+                   redisCache.checkCachedData, //redis cache
                    ProductsController.products_get_productid );
 
 router.patch('/:id', checkAuth,
