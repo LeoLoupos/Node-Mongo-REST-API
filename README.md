@@ -1,6 +1,6 @@
 # NodeJS Rest API with Express , MongoDB , JWT and multer
 
-A simple NodeJS Rest API with Express , MongoDB , JWT and multer.
+A template for NodeJS Rest API with Express , MongoDB , JWT and multer.
 
 - The packages I use: 
   - joi for data validation
