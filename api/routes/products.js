@@ -41,7 +41,8 @@ const upload = multer({
 }); //Be careful the absolute paths like '/uploads/'
 
 
-router.get('/', redisCache.checkCachedData , //redis cache
+router.get('/', checkAuth,
+                redisCache.checkCachedData , //redis cache
                 ProductsController.products_get_all );
 
 router.post('/', checkAuth, 
