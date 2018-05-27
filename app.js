@@ -4,6 +4,9 @@ const morgan = require('morgan'); // morgan calls the next() , to inform that it
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 var MongoClient = require('mongoose');
+var passport = require('passport');
+
+
 
 const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
@@ -31,6 +34,9 @@ app.use('/uploads' , express.static('uploads')); // file uploads is public stati
 app.use(rateLimit.limiter);
 
 
+//Passport - can be used as middleware with : passport.authenticate('jwt', { session: false }) but for now we use jsonwebtoken package with check-auth.js
+// app.use(passport.initialize());
+
 //MongoDB Set Up
 var uri = `mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@${process.env.MONGO_ATLAS_URL}?retryWrites=false`;
 
@@ -40,25 +46,6 @@ MongoClient.connect(uri, function(err, client) {
 
 MongoClient.Promise = global.Promise;//we can use bluebird etc..
 
-// var RateLimit = require('express-rate-limit');
-// var RedisStore = require('rate-limit-redis');
- 
-// try{
-//     var limiter = new RateLimit({
-//     store: new RedisStore({
-//         // see Configuration
-//         expiry: 120,
-//         prefix: 'app_main_server',
-//         client: require('redis').createClient()
-//     }),
-//     max: 1, // limit each IP to 100 requests per windowMs
-//     delayMs: 0 // disable delaying - full speed until the max limit is reached
-//     });
-// } catch (e) {
-
-// }
-
-// app.use(limiter);
 
 //Every request that is getting build , adds that to the header;
 app.use((req, res, next) => {

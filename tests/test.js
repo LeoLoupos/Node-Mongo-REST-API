@@ -5,9 +5,8 @@ const sinon = require("sinon");
 const request = require("supertest");
 const app = require('../app');
 
-const bodyValidation = require("../api/middleware/body-validation");
+// const bodyValidation = require("../api/middleware/body-validation");
 
-//SimonJS
 /* 
 
 Spies: Creates fake functions which we can use to track executions. This means we can tell/ find out whether the function has been executed/ how many times its been called etc. We can also use spies on existing functions and get the same capability, to track those functions executions. We'll see this in action a bit later.
@@ -18,6 +17,26 @@ Mocks: They are fake methods, that have pre-programmed behavior and pre-programm
 
 */
 
+//Validation on Sign Up - User Spy
+describe("checkAuthPaths", function() {
+  it("should return 401 not Authorized", function() {
+    return request(app)
+      .get('/products')
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .expect(401, {message: 'Auth failed'});
+  });
+});
+
+describe("checkAuthPaths", function() {
+  it("should return 401 not Authorized", function() {
+    return request(app)
+      .get('/orders')
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .expect(401, {message: 'Auth failed'});
+  });
+});
 
 // //Validation on Sign Up - User Spy
 // describe("validateUser_signUpData", function() {
@@ -47,14 +66,3 @@ Mocks: They are fake methods, that have pre-programmed behavior and pre-programm
 //     // expect(res.json.firstCall.args[0]).to.equal("bla");
 //   });
 // });
-
-//Validation on Sign Up - User Spy
-describe("validateUser_signUpData", function() {
-  it("should return validated data", function() {
-    request(app)
-      .get('/')
-      .expect(401, 'Auth failed', done);
-  });
-});
-
-
