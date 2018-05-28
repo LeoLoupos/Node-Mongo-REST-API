@@ -3,7 +3,7 @@
 A template for NodeJS Rest API with Express , MongoDB , JWT and multer.
 
 - The packages I use:
-  - Redis for cahing routes responses and rate-limiting .
+  - Redis for caching routes responses and rate-limiting .
   - joi for data validation
   - bcrypt for password hashing
   - mongoose for MongoDB client
