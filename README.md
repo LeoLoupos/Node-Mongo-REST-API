@@ -2,20 +2,26 @@
 
 A template for NodeJS Rest API with Express , MongoDB , JWT and multer.
 
-- The packages I use: 
+- The packages I use:
+  - Redis for cahing routes responses and rate-limiting .
   - joi for data validation
   - bcrypt for password hashing
   - mongoose for MongoDB client
   - morgan for logging
   - body-parser
-  - file and image uploading with multer
-  - JsonWebToken for signed tokens
- 
+  - Multer for file and image uploading and validation 
+  - JsonWebToken for signed tokens or with passport.js Jwt strategy
+  - Helmet for protection
+
 - The server has a custom CORS solution.
 
 - The data model entities: User, Product, Order.
+
 - I use uid reference to join the data structures and relate them. 
 
+- on the /controllers you will find 2 different approaches for the orders and the products routes.
+  - controllers/orders.js is with async await
+  - controllers/products.js is with callback hell
 
 ## Getting Started
 
