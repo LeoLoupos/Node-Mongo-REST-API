@@ -21,7 +21,7 @@ A template for NodeJS Rest API with Express , MongoDB , JWT and multer.
 
 - on the /controllers you will find 2 different approaches for the orders and the products routes.
   - controllers/orders.js is with async await
-  - controllers/products.js is with callback hell
+  - controllers/products.js is with promise "hell"
 
 ## Getting Started
 
