@@ -1,11 +1,13 @@
 const chai = require("chai");
 const expect = chai.expect;
 const sinon = require("sinon");
+const chaiJWT = require('chai-jwt');
+chai.use(chaiJWT);
 
 const request = require("supertest");
+
 const app = require('../app');
 
-// const bodyValidation = require("../api/middleware/body-validation");
 
 /* 
 
@@ -17,25 +19,131 @@ Mocks: They are fake methods, that have pre-programmed behavior and pre-programm
 
 */
 
-//Validation on Sign Up - User Spy
-describe("checkAuthPaths", function() {
+
+describe("checkProducts AuthPaths", function() {
   it("should return 401 not Authorized", function() {
-    return request(app)
+      request(app)
       .get('/products')
       .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
-      .expect(401, {message: 'Auth failed'});
+      .expect('Content-Type', 'application/json; charset=utf-8')
+      .expect(401, {message: 'Auth failed'})
+      .end(function(err, res) {
+        if (err) throw err;
+      });
   });
 });
 
-describe("checkAuthPaths", function() {
+describe("checkOrders AuthPaths", function() {
   it("should return 401 not Authorized", function() {
     return request(app)
       .get('/orders')
       .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
+      .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(401, {message: 'Auth failed'});
   });
+});
+
+
+describe("checkSignUp", function() {
+
+  it('it responds with 201 status on signUp',  (done) => {
+    
+    request(app)
+      .post('/user/signup')
+      .type('json')
+      .send('{"email":"test2@gmail.com","password":"password"}')
+      .expect(201)
+      .end(function(err, res) {
+          if (err) {
+            return done(err);
+          }
+
+          console.log(res.body);
+          done(res);
+      });
+  });
+//   it("should return 201 and a new user", function(done) {
+
+//        request(app)
+//       .post('/user/signup')
+//       .send({email: 'tester@gmail.com',password: '1234567890'})
+//       // .send('email=tester@gmail.com;password=1234567890')
+//       // .type('json')
+//       //       .send('{"username":"bad","password":"wrong"}')
+//       .set('Accept', 'application/json')
+//       .expect('Content-Type', 'application/json; charset=utf-8')
+//       // .expect(function(res) {
+//       //   res.body.message = 'User created'
+//       // })
+//       .expect(201, {message: 'User created'})
+//       .catch((err) => {
+//         console.log(err);
+//         done();
+//       });
+
+//   });
+});
+
+describe("checkLogIn POST /user/login", function() {
+
+  //CallBack Hell Approach
+  it('it responds with 401 status code if bad username or password', function(done) {
+
+    request(app)
+        .post('/user/login')
+        .type('json')
+        .send('{"email":"bad","password":"wrong"}')
+        .expect(422, {
+          status: 'error',
+          message: 'Invalid request data',
+          data: {
+            email: "bad",
+            password: "wrong"
+          }
+        })
+        .end(function(err, res) {
+            if (err) return done(err);
+            console.log(res.body);
+            done();
+        });
+  });
+
+  //Async Await approach
+  it('it responds with 401 status code if bad username or password', async () => {
+
+    var result = await request(app)
+        .post('/user/login')
+        .type('json')
+        .send('{"email":"bad","password":"wrong"}')
+        .expect(422, {
+          status: 'error',
+          message: 'Invalid request data',
+          data: {
+            email: "bad",
+            password: "wrong"
+          }
+        })
+      
+      console.log(result.body); //expect on that result
+
+  });
+
+  //JWT 
+  it('it returns JWT token if good username or password', function(done) {
+    request(app)
+        .post('/user/login')
+        .type('json')
+        .send('{"username":"test2@gmail.com","password":"password"}')
+        .end(function(err, res) {
+            if (err) {
+              return done(err);
+            }
+            expect(res.body).have.property('token'); //expect().to.be.a.jwt
+
+            done(res);
+        });
+  });
+
 });
 
 // //Validation on Sign Up - User Spy

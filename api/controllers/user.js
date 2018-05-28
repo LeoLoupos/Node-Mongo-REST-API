@@ -64,7 +64,7 @@ exports.user_login = function(req, res, next){
                 expiresIn: '1h'
             });
 
-            res.status(200).json({ 
+            return res.status(200).json({ 
                     message: 'Auth successful',
                     token: token //JWT token is encoded but not encrypted
             });

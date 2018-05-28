@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Product = require('../models/product');
 
+//Nested promises run only with return promise , but with async/await , everything is much simpler
+
 
 //'GET' /products controller
 exports.products_get_all = function(req, res, next){
@@ -126,8 +128,8 @@ exports.products_patch_product = function(req, res, next){
     //we build the { name: req.body.newName , price: req.body.newPrice}
     // but because req.body is not iteratable => [ { "propName": "name", "value": "Harry Poter" } ]
 
-    Product.update({ _id: id }, { $set: updateOps })
-    .exec()//mongoose $set
+    Product.update({ _id: id }, { $set: updateOps })//mongoose $set
+    .exec()
     .then(result =>{
         res.status(200).json({
             message: `Product with ID: ${id} has been updated`,
