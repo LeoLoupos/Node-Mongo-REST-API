@@ -2,20 +2,26 @@
 
 A template for NodeJS Rest API with Express , MongoDB , JWT and multer.
 
-- The packages I use: 
+- The packages I use:
+  - Redis for cahing routes responses and rate-limiting .
   - joi for data validation
   - bcrypt for password hashing
   - mongoose for MongoDB client
   - morgan for logging
   - body-parser
-  - file and image uploading with multer
-  - JsonWebToken for signed tokens
- 
+  - Multer for file and image uploading and validation 
+  - JsonWebToken for signed tokens or with passport.js Jwt strategy
+  - Helmet for protection
+
 - The server has a custom CORS solution.
 
 - The data model entities: User, Product, Order.
+
 - I use uid reference to join the data structures and relate them. 
 
+- on the /controllers you will find 2 different approaches for the orders and the products routes.
+  - controllers/orders.js is with async await
+  - controllers/products.js is with callback hell
 
 ## Getting Started
 
@@ -57,7 +63,7 @@ Google how to pass your process.env data , in your nodeJS server
    - :white_check_mark: [Redis](https://www.npmjs.com/package/redis) middleware caching on GET routes.
    - :white_check_mark: Security Issues as : CSRF - Http Headers with Helmet
    - XSS & Content-Security-Policy - Setting Up with [helmet-csp](https://www.npmjs.com/package/helmet-csp)
-   - :white_check_mark: Brute force Protection with [ratelimit.js](https://www.npmjs.com/package/ratelimit.js) and [Redis](https://www.npmjs.com/package/redis)
+   - :white_check_mark: Brute force Protection with [express-rate-limit](https://www.npmjs.com/package/express-rate-limit) and [Redis](https://www.npmjs.com/package/redis)
    - Errors with [Winston](https://www.npmjs.com/package/winston)
    - Testing 
      - :white_check_mark: End to End tests  
