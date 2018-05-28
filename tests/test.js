@@ -86,7 +86,7 @@ describe("checkSignUp", function() {
 
 describe("checkLogIn POST /user/login", function() {
 
-  //CallBack Hell Approach
+  //Promise Hell Approach
   it('it responds with 401 status code if bad username or password', function(done) {
 
     request(app)
